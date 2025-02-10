@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <AppNavbar />
-    <Log_in />
+    <!-- <Log_in /> -->
     <UserSignup />
     <!-- <router-link to="/">Home</router-link> -->
     <AppFooter />
@@ -11,7 +11,7 @@
 <script>
 import AppNavbar from './components/Navbar.vue'
 import AppFooter from './components/Footer.vue'
-import Log_in from  './components/Login.vue'
+// import Log_in from  './components/Login.vue'
 import UserSignup from './components/Signup.vue'
 
 
@@ -20,7 +20,7 @@ export default {
   components: {
     AppNavbar,
     AppFooter,
-    Log_in,
+    // Log_in,
     UserSignup,
   }
 }
