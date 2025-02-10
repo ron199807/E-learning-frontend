@@ -1,19 +1,27 @@
 <template>
-  <Log_in />
-  
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <AppNavbar />
+    <Log_in />
+    <UserSignup />
+    <!-- <router-link to="/">Home</router-link> -->
+    <AppFooter />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavbar from './components/Navbar.vue'
+import AppFooter from './components/Footer.vue'
 import Log_in from  './components/Login.vue'
+import UserSignup from './components/Signup.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    AppNavbar,
+    AppFooter,
     Log_in,
+    UserSignup,
   }
 }
 </script>

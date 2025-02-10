@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-// Set the base URL for your Django backend
+// Set the base URL for the Django backend
 const apiClient = axios.create({
   baseURL: 'http://127.0.0.1:8000/api/',  // Replace with your Django backend URL
   headers: {
@@ -49,4 +49,5 @@ export default {
   getCategories() {
     return apiClient.get('/categories/');
   },
-};
+}
+

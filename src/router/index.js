@@ -1,27 +1,30 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Log_in from '@/components/Login.vue';
-import CourseList from '@/components/CourseList.vue';
-
-Vue.use(VueRouter);
+import { createRouter, createWebHistory } from 'vue-router'
+import Log_in from '@/components/Login.vue'
+import UserSignup from '@/components/Signup.vue'
+import CourseList from '@/components/CourseList.vue'
 
 const routes = [
+  // {
+  //   path: '/', name: 'Home', component: Home,
+ // meta: {requiresAuth: true},
+  // },
   { path: '/login', component: Log_in },
+  { path: '/signup', component: UserSignup }, 
   { path: '/', component: CourseList, meta: { requiresAuth: true } },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes,
 });
 
 // Add navigation guard to protect routes
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = router.app.$store.getters.isAuthenticated;
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    next('/login');
+  const token = localStorage.getItem('token');
+  if (to.meta.requiresAuth && !token) {
+    next('/login'); // Redirect to login if not authenticated
   } else {
-    next();
+    next(); // Proceed to the route
   }
 });
 
