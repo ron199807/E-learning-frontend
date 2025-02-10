@@ -45,7 +45,7 @@ export default {
   methods: {
     async handleSignup() {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', {
+        const response = await axios.post('http://127.0.0.1:8000/api/register/', {
           username: this.username,
           email: this.email,
           password: this.password,
