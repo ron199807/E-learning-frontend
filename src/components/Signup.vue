@@ -33,6 +33,7 @@
 import axios from 'axios';
 
 export default {
+  name: 'UserSignup',
   data() {
     return {
       username: '',

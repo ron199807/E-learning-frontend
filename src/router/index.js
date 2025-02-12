@@ -2,15 +2,27 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Log_in from '@/components/Login.vue'
 import UserSignup from '@/components/Signup.vue'
 import CourseList from '@/components/CourseList.vue'
+import CourseMaterial from '@/components/CourseMaterial.vue'
 
 const routes = [
   // {
   //   path: '/', name: 'Home', component: Home,
  // meta: {requiresAuth: true},
   // },
-  { path: '/login', component: Log_in },
-  { path: '/signup', component: UserSignup }, 
-  { path: '/', component: CourseList, meta: { requiresAuth: true } },
+  { path: '/login',
+    component: Log_in
+  },
+  { path: '/signup',
+    component: UserSignup
+  }, 
+  { path: '/',
+    component: CourseList
+  },
+  {
+    path: '/course/:courseId',
+    name: 'CourseMaterial',
+    component: CourseMaterial,
+  },
 ];
 
 const router = createRouter({
