@@ -1,0 +1,160 @@
+<template>
+    <div>
+      <h1>Welcome to the E-Learning Platform</h1>
+  
+      <!-- Categories as Links -->
+      <div class="categories">
+        <h2>Categories</h2>
+        <ul>
+          <li v-for="category in categories" :key="category.id">
+            <router-link :to="`/category/${category.id}`">{{ category.name }}</router-link>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input v-model="searchQuery" type="text" placeholder="Search for courses..." />
+        <button @click="searchCourses">Search</button>
+      </div>
+  
+      <!-- Course List -->
+      <div class="course-list">
+        <h2>Courses</h2>
+        <div v-if="loading">Loading...</div>
+        <div v-else>
+          <div v-for="course in courses" :key="course.id" class="course-card" @click="viewCourse(course.id)">
+            <img :src="course.image" :alt="course.title" class="course-image" v-if="course.image" />
+            <div class="course-details">
+              <h3>{{ course.title }}</h3>
+              <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+              <p><strong>Price:</strong> {{ course.is_paid ? `$${course.price}` : 'Free' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  
+  export default {
+    name: 'UserHome',
+    data() {
+      return {
+        categories: [],
+        courses: [],
+        searchQuery: '',
+        loading: true,
+        error: '',
+      };
+    },
+    async created() {
+      // Fetch categories
+      try {
+        const categoriesResponse = await axios.get('http://127.0.0.1:8000/categories/');
+        this.categories = categoriesResponse.data;
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+  
+      // Fetch all courses
+      try {
+        const coursesResponse = await axios.get('http://127.0.0.1:8000/courses/');
+        this.courses = coursesResponse.data;
+      } catch (error) {
+        this.error = 'Failed to fetch courses. Please try again.';
+        console.error('Error fetching courses:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    methods: {
+      async searchCourses() {
+        try {
+          const response = await axios.get('http://127.0.0.1:8000/courses/search/', {
+            params: { query: this.searchQuery },
+          });
+          this.courses = response.data;
+        } catch (error) {
+          console.error('Error searching courses:', error);
+        }
+      },
+      async viewCourse(courseId) {
+        try {
+          const response = await axios.get(`http://127.0.0.1:8000/courses/${courseId}/check-access/`);
+          if (response.data.has_access) {
+            // Redirect to the student dashboard
+            this.$router.push(`/student-dashboard/${courseId}`);
+          } else {
+            if (this.$store.state.user) {
+              // Redirect to the payment component
+              this.$router.push(`/payment/${courseId}`);
+            } else {
+              // Redirect to the signup component
+              this.$router.push('/signup');
+            }
+          }
+        } catch (error) {
+          console.error('Error checking course access:', error);
+        }
+      },
+    },
+  };
+  </script>
+  
+  <style scoped>
+  .categories ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .categories li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .categories a {
+    text-decoration: none;
+    color: #42b983;
+  }
+  
+  .search-bar {
+    margin: 20px 0;
+  }
+  
+  .course-list {
+    margin-top: 20px;
+  }
+  
+  .course-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .course-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 16px;
+  }
+  
+  .course-details {
+    flex: 1;
+  }
+  
+  h3 {
+    margin: 0 0 8px 0;
+  }
+  
+  p {
+    margin: 4px 0;
+  }
+  </style>

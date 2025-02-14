@@ -3,12 +3,16 @@ import Log_in from '@/components/Login.vue'
 import UserSignup from '@/components/Signup.vue'
 import CourseList from '@/components/CourseList.vue'
 import CourseMaterial from '@/components/CourseMaterial.vue'
+import UserHome from '@/components/Home.vue'
+import UserPayment from '@/components/Payment.vue'
+import StudentDashboard from '@/components/StudentDashboard.vue'
 
 const routes = [
-  // {
-  //   path: '/', name: 'Home', component: Home,
- // meta: {requiresAuth: true},
-  // },
+  {
+    path: '/',
+    name: 'Home',
+    component: UserHome,
+  },
   { path: '/login',
     component: Log_in
   },
@@ -23,6 +27,17 @@ const routes = [
     name: 'CourseMaterial',
     component: CourseMaterial,
   },
+  {
+    path: '/payment/:courseId',
+    name: 'Payment',
+    component: UserPayment,
+  },
+  {
+    path: '/studentDashboard/:courseId',
+    name: 'StudentDashboard',
+    component: StudentDashboard,
+  },
+
 ];
 
 const router = createRouter({

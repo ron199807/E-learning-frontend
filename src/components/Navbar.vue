@@ -9,7 +9,7 @@
   
   <script>
   export default {
-    name: 'AppNavbar',  // Multi-word component name
+    name: 'AppNavbar',
     computed: {
       isAuthenticated() {
         return this.$store.getters.isAuthenticated;

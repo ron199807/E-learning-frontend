@@ -16,6 +16,7 @@
   import axios from 'axios';
   
   export default {
+    name: 'StudentDashboard',
     data() {
       return {
         courses: [],
