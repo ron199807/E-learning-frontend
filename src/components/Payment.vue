@@ -21,7 +21,7 @@
     async created() {
       const courseId = this.$route.params.courseId;
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/courses/${courseId}/`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/courses/${courseId}/`);
         this.course = response.data;
       } catch (error) {
         this.error = 'Failed to fetch course details. Please try again.';
@@ -34,7 +34,7 @@
       async processPayment() {
         try {
           // Simulate payment processing
-          await axios.post(`http://127.0.0.1:8000/courses/${this.course.id}/enroll/`, {}, {
+          await axios.post(`http://127.0.0.1:8000/api/courses/${this.course.id}/enroll/`, {}, {
             headers: { Authorization: `Token ${this.$store.state.token}` },
           });
           alert('Payment successful! You now have access to the course.');

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>Welcome to the E-Learning Platform</h1>
+      <h1>Welcome to BEET</h1>
   
       <!-- Categories as Links -->
       <div class="categories">
@@ -14,8 +14,8 @@
   
       <!-- Search Bar -->
       <div class="search-bar">
-        <input v-model="searchQuery" type="text" placeholder="Search for courses..." />
-        <button @click="searchCourses">Search</button>
+        <input class="search-field" v-model="searchQuery" type="text" placeholder="Search for courses..." />
+        <button class="btn-search" @click="searchCourses">Search</button>
       </div>
   
       <!-- Course List -->
@@ -53,7 +53,7 @@
     async created() {
       // Fetch categories
       try {
-        const categoriesResponse = await axios.get('http://127.0.0.1:8000/categories/');
+        const categoriesResponse = await axios.get('http://127.0.0.1:8000/api/categories/');
         this.categories = categoriesResponse.data;
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -61,7 +61,7 @@
   
       // Fetch all courses
       try {
-        const coursesResponse = await axios.get('http://127.0.0.1:8000/courses/');
+        const coursesResponse = await axios.get('http://127.0.0.1:8000/api/courses/');
         this.courses = coursesResponse.data;
       } catch (error) {
         this.error = 'Failed to fetch courses. Please try again.';
@@ -73,7 +73,7 @@
     methods: {
       async searchCourses() {
         try {
-          const response = await axios.get('http://127.0.0.1:8000/courses/search/', {
+          const response = await axios.get('http://127.0.0.1:8000/api/courses/search/', {
             params: { query: this.searchQuery },
           });
           this.courses = response.data;
@@ -83,7 +83,7 @@
       },
       async viewCourse(courseId) {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/courses/${courseId}/check-access/`);
+          const response = await axios.get(`http://127.0.0.1:8000/api/courses/${courseId}/check-access/`);
           if (response.data.has_access) {
             // Redirect to the student dashboard
             this.$router.push(`/student-dashboard/${courseId}`);
@@ -117,13 +117,43 @@
   
   .categories a {
     text-decoration: none;
-    color: #42b983;
+    color: #2b54cd;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 4px;
   }
-  
+   
+  /* search bar styles */
+
   .search-bar {
-    margin: 20px 0;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5px 0; */
+    margin: auto;
+    width: 80%;
+    gap: .5rem;
   }
   
+  .search-field{
+    border: 0;
+    width: 60%;
+    height: 1.5rem;
+    border-radius: .3rem;
+    box-shadow: 0 0 2px #838080;
+  }
+
+  .btn-search {
+    border: 0;
+    color: #fff;
+    background: #2b54cd;
+    font-weight: bold;
+    height: 1.5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+  }
+
   .course-list {
     margin-top: 20px;
   }

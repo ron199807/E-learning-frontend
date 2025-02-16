@@ -26,7 +26,12 @@
   
   <style scoped>
   nav {
-    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    background-color: #ccc;
     padding: 10px;
   }
   
@@ -34,6 +39,7 @@
     color: white;
     margin-right: 10px;
     text-decoration: none;
+    font-weight: bold;
   }
   
   nav a:hover {
