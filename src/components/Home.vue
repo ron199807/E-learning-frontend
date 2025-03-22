@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>Welcome to BEET</h1>
+      <h1>Welcome to BTEE</h1>
   
       <!-- Categories as Links -->
       <div class="categories">

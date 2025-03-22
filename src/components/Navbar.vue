@@ -1,9 +1,9 @@
 <template>
     <nav>
-      <router-link to="/">Home</router-link>
+      <router-link class="btn-home" to="/">Home</router-link>
       <router-link to="/login" v-if="!isAuthenticated">Login</router-link>
       <router-link to="/signup" v-if="!isAuthenticated">Sign Up</router-link>
-      <button @click="logout" v-if="isAuthenticated">Logout</button>
+      <button class="btn-logout" @click="logout" v-if="isAuthenticated">Logout</button>
     </nav>
   </template>
   
@@ -12,16 +12,16 @@
     name: 'AppNavbar',
     computed: {
       isAuthenticated() {
-        return this.$store.getters.isAuthenticated;
+        return this.$store.getters.isAuthenticated
       },
     },
     methods: {
       async logout() {
-        await this.$store.dispatch('logout');
-        this.$router.push('/login');
+        await this.$store.dispatch('logout')
+        this.$router.push('api/login')
       },
     },
-  };
+  }
   </script>
   
   <style scoped>
@@ -43,7 +43,7 @@
   }
   
   nav a:hover {
-    text-decoration: underline;
+    background: #2e08e8;
   }
   
   button {
@@ -52,6 +52,17 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+  }
+
+  .btn-logout{
+    border-radius: .3rem;
+    font-weight: bold;
+  }
+
+  .btn-home{
+    background: #1a077b;
+    padding: 5px 10px;
+    border-radius: .3rem;
   }
   
   button:hover {
