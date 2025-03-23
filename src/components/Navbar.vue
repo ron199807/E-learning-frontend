@@ -2,7 +2,8 @@
     <nav>
       <router-link class="btn-home" to="/">Home</router-link>
       <router-link to="/login" v-if="!isAuthenticated">Login</router-link>
-      <router-link to="/signup" v-if="!isAuthenticated">Sign Up</router-link>
+      <router-link to="/signup" v-if="!isAuthenticated" @click="debugNavigation">Sign Up</router-link>
+      <router-link to="/dashboard" v-if="isAuthenticated">Dashboard</router-link>
       <button class="btn-logout" @click="logout" v-if="isAuthenticated">Logout</button>
     </nav>
   </template>
@@ -16,6 +17,9 @@
       },
     },
     methods: {
+      debugNavigation() {
+        console.log('Sign Up link clicked');
+      },
       async logout() {
         await this.$store.dispatch('logout')
         this.$router.push('api/login')

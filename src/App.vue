@@ -1,25 +1,22 @@
 <template>
   <div id="app">
     <AppNavbar />
-    <UserHome />
+    <router-view></router-view> <!-- This will render the current route's component -->
     <AppFooter />
   </div>
 </template>
 
 <script>
-import AppNavbar from './components/Navbar.vue'
-import AppFooter from './components/Footer.vue'
-import UserHome from './components/Home.vue'
-
+import AppNavbar from './components/Navbar.vue';
+import AppFooter from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     AppNavbar,
     AppFooter,
-    UserHome,
-  }
-}
+  },
+};
 </script>
 
 <style>
@@ -30,7 +27,8 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-body{
+
+body {
   margin: 0;
 }
 </style>
