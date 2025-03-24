@@ -5,7 +5,7 @@ import UserSignup from '@/components/Signup.vue';
 import CourseMaterial from '@/components/CourseMaterial.vue';
 import UserHome from '@/components/Home.vue';
 import UserPayment from '@/components/Payment.vue';
-import Studentdashboard from '@/components/StudentDashboard.vue';
+import Studentdashboard from '@/components/dashboard/ELearningDashboard.vue';
 
 const routes = [
   {
@@ -37,7 +37,7 @@ const routes = [
   },
 
   {
-    path: '/studentdashboard',
+    path: '/dashboard',
     name: 'StudentDashboard',
     component: Studentdashboard,
     meta: { requiresAuth: true },

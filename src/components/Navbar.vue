@@ -1,10 +1,15 @@
 <template>
-    <nav>
-      <router-link class="btn-home" to="/">Home</router-link>
-      <router-link to="/login" v-if="!isAuthenticated">Login</router-link>
-      <router-link to="/signup" v-if="!isAuthenticated" @click="debugNavigation">Sign Up</router-link>
-      <router-link to="/dashboard" v-if="isAuthenticated">Dashboard</router-link>
-      <button class="btn-logout" @click="logout" v-if="isAuthenticated">Logout</button>
+    <nav class="nav-container">
+      <div>
+        <router-link class="btn-home" to="/">Home</router-link>
+      </div>
+
+      <div>
+        <router-link to="/login" v-if="!isAuthenticated">Login</router-link>
+        <router-link to="/signup" v-if="!isAuthenticated" @click="debugNavigation">Sign Up</router-link>
+        <router-link to="/dashboard" v-if="isAuthenticated">Dashboard</router-link>
+        <button class="btn-logout" @click="logout" v-if="isAuthenticated">Logout</button>
+    </div>
     </nav>
   </template>
   
@@ -29,7 +34,7 @@
   </script>
   
   <style scoped>
-  nav {
+  .nav-container {
     display: flex;
     justify-content: space-between;
     position: sticky;
@@ -37,6 +42,7 @@
     align-items: center;
     background-color: #ccc;
     padding: 10px;
+    z-index: 99999;
   }
   
   nav a {
