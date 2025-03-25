@@ -50,7 +50,7 @@
 <style scoped>
 .hero-section {
   background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
-  padding: 140px 0 100px;
+  padding: .5rem .9rem;
   position: relative;
   overflow: hidden;
 }

@@ -62,14 +62,14 @@ import {
 } from 'lucide-vue-next';
 
 // Import components
-import SidebarHeader from './sidebar/DashSidebarHeader.vue';
-import SidebarNavigation from './sidebar/DashSidebarNavigation.vue';
-import UpgradeCard from './sidebar/DashUpgradeCard.vue';
-import DashboardHeader from './DashboardHeader.vue';
-import WelcomeSection from './content/DashWelcomeSection.vue';
-import StatsCards from './content/DashStatsCards.vue';
-import TabsContainer from './content/DashTabsContainer.vue';
-import AssignmentsList from './content/DashAssignmentsList.vue';
+import SidebarHeader from '@/components/dashboard/sidebar/DashSidebarHeader.vue'
+import SidebarNavigation from '@/components/dashboard/sidebar/DashSidebarNavigation.vue';
+import UpgradeCard from '@/components/dashboard/sidebar/DashUpgradeCard.vue';
+import DashboardHeader from '@/components/dashboard/DashboardHeader.vue';
+import WelcomeSection from '@/components/dashboard/content/DashWelcomeSection.vue';
+import StatsCards from '@/components/dashboard/content/DashStatsCards.vue';
+import TabsContainer from '@/components/dashboard/content/DashTabsContainer.vue';
+import AssignmentsList from '@/components/dashboard/content/DashAssignmentsList.vue';
 
 export default {
   name: 'ElearningDashboard',

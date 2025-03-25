@@ -8,7 +8,7 @@
               <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
               <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
             </svg>
-            <span class="logo-text">EduLearn</span>
+            <span class="logo-text">Btee</span>
           </div>
           <p class="footer-description">
             Empowering individuals through quality online education and lifelong learning.
@@ -214,7 +214,7 @@ const submitNewsletter = () => {
 .footer {
   background-color: #1f2937;
   color: white;
-  padding: 5rem 0 2rem;
+  padding:   2rem;
 }
 
 .footer-grid {

@@ -3,15 +3,16 @@ import Log_in from '@/components/LandingPage/Login.vue';
 import UserSignup from '@/components/LandingPage/Signup.vue';
 // import CourseList from '@/components/CourseList.vue';
 import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
-import UserHome from '@/components/LandingPage/Home.vue';
+// import UserHome from '@/components/LandingPage/Home.vue';
 import UserPayment from '@/components/LandingPage/Payment.vue';
-import Studentdashboard from '@/components/dashboard/ELearningDashboard.vue';
+import Studentdashboard from '@/components/views/ELearningDashboard.vue';
+import LandingPage from '@/components/views/LandingPage.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: UserHome,
+    component: LandingPage,
   },
   {
     path: '/login',

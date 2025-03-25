@@ -2,7 +2,7 @@
   <section id="features" class="features-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Why Choose <span class="highlight">EduLearn</span>?</h2>
+        <h2 class="section-title">Why Choose <span class="highlight">Btee</span>?</h2>
         <p class="section-description">
           Our platform offers everything you need to succeed in your learning journey.
         </p>

@@ -5,7 +5,7 @@
         <div class="cta-content">
           <h2 class="cta-title">Ready to Start Your Learning Journey?</h2>
           <p class="cta-description">
-            Join thousands of students who are already learning and growing with EduLearn.
+            Join thousands of students who are already learning and growing with Btee.
             Get unlimited access to all courses with our flexible plans.
           </p>
           
@@ -136,18 +136,21 @@
   gap: 1rem;
   width: 100%;
   max-width: 400px;
+  border-radius: .9rem;
 }
 
 .btn-light {
-  background-color: white;
+  background-color: rgb(58, 49, 49);
   color: var(--primary);
   font-weight: 700;
   padding: 1rem 2rem;
   font-size: 1.125rem;
+  border-radius: .9rem;
+  text-decoration: none;
 }
 
 .btn-light:hover {
-  background-color: #f5f5f5;
+  background-color: #706a6a;
   transform: translateY(-2px);
 }
 
@@ -158,6 +161,9 @@
   font-weight: 700;
   padding: 1rem 2rem;
   font-size: 1.125rem;
+  border-radius: .9rem;
+  text-decoration: none;
+
 }
 
 .btn-outline-light:hover {

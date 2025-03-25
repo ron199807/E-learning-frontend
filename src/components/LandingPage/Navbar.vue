@@ -6,7 +6,7 @@
           <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
           <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
-        <span class="logo-text">EduLearn</span>
+        <span class="logo-text">Btee</span>
       </div>
       <nav class="main-nav">
         <router-link to="/" class="nav-link">Home</router-link>
@@ -105,12 +105,13 @@ export default {
 .header {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
+  position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 13;
   transition: all 0.3s ease;
   border-bottom: 1px solid transparent;
+  width: 100%;
+  
 }
 
 .header.scrolled {
