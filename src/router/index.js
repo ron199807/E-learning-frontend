@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Log_in from '@/components/Login.vue';
-import UserSignup from '@/components/Signup.vue';
+import Log_in from '@/components/LandingPage/Login.vue';
+import UserSignup from '@/components/LandingPage/Signup.vue';
 // import CourseList from '@/components/CourseList.vue';
-import CourseMaterial from '@/components/CourseMaterial.vue';
-import UserHome from '@/components/Home.vue';
-import UserPayment from '@/components/Payment.vue';
+import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
+import UserHome from '@/components/LandingPage/Home.vue';
+import UserPayment from '@/components/LandingPage/Payment.vue';
 import Studentdashboard from '@/components/dashboard/ELearningDashboard.vue';
 
 const routes = [
