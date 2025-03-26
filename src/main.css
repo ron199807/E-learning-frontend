@@ -47,3 +47,39 @@
   .gap-4 {
     gap: 1rem;
   }
+
+
+  .btn-primary {
+  background-color: #4f22f3;
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: .9rem;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #4f22f3;
+  border: 2px solid  var(--text-primary);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: .9rem;
+  text-decoration: none;
+
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #4f22f3;
+  border: 2px solid  var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-outline:hover {
+  background-color: #4f22f3;
+  color: #fff;
+  transform: translateY(-2px);
+}

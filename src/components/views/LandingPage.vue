@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  
     <AppNavbar />
     <AppHero />
     <AppStats />
@@ -9,7 +9,7 @@
     <AppPricing />
     <AppCta2 />
     <AppFooter />
-  </div>
+  
 </template>
 
 <script>
@@ -24,7 +24,7 @@ import AppPricing from '@/components/LandingPage/AppPricing.vue';
 import AppCta2 from '@/components/LandingPage/AppCta2.vue';
 
 export default {
-  name: 'App',
+  name: 'LandingPage',
   components: {
     AppNavbar,
     AppHero,

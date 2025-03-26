@@ -47,7 +47,7 @@
         <a href="#pricing" class="mobile-nav-link" @click="closeMobileMenu">Pricing</a>
         <router-link to="/login" class="mobile-nav-link" @click="closeMobileMenu" v-if="!isAuthenticated">Log in</router-link>
         <router-link to="/signup" class="btn btn-primary mobile-btn" @click="closeMobileMenu" v-if="!isAuthenticated">Sign up</router-link>
-        <router-link to="/dashboard" class="mobile-nav-link" @click="closeMobileMenu" v-if="isAuthenticated">Dashboard</router-link>
+        <router-link to="/dashboard" class="mobile-nav-link" @click="navigateToDashboard" v-if="isAuthenticated">Dashboard</router-link>
         <button @click="logout" class="btn btn-primary mobile-btn" v-if="isAuthenticated">Logout</button>
       </nav>
     </div>
@@ -65,16 +65,25 @@ export default {
   },
   computed: {
     isAuthenticated() {
-      return this.$store.getters.isAuthenticated;
+      return this.$store.getters.isAuthenticated || localStorage.getItem('token')
     },
   },
   methods: {
     debugNavigation() {
       console.log('Sign Up link clicked');
     },
+
+    navigateToDashboard() {
+      console.log('Attempting to navigate to dashboard');
+      console.log('Current auth state:', this.isAuthenticated);
+      this.$router.push('/dashboard')
+        .then(() => console.log('Navigation successful'))
+        .catch(err => console.error('Navigation failed:', err));
+  },
+
     async logout() {
       await this.$store.dispatch('logout');
-      this.$router.push('api/login');
+      this.$router.push('/login');
     },
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -165,7 +174,7 @@ export default {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--primary);
+  color: --te;
 }
 
 .nav-link::after {

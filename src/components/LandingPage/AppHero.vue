@@ -134,38 +134,6 @@
   margin-top: 1rem;
 }
 
-.btn-primary {
-  background-color: #4f22f3;
-  color: #fff;
-  font-weight: 700;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  border-radius: .9rem;
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  background-color: #236fe2;
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: #4f22f3;
-  border: 2px solid #ccc;
-  font-weight: 700;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  border-radius: .9rem;
-  text-decoration: none;
-
-}
-
-.btn-outline :hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
 .hero-image {
   position: relative;
   border-radius: var(--radius-lg);

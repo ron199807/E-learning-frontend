@@ -1,18 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Log_in from '@/components/LandingPage/Login.vue';
 import UserSignup from '@/components/LandingPage/Signup.vue';
-// import CourseList from '@/components/CourseList.vue';
 import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
-// import UserHome from '@/components/LandingPage/Home.vue';
 import UserPayment from '@/components/LandingPage/Payment.vue';
-// import Studentdashboard from '@/components/views/ELearningDashboard.vue';
 import LandingPage from '@/components/views/LandingPage.vue';
 import ElearningDashboard from '@/components/views/ELearningDashboard.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'LandingPage',
     component: LandingPage,
   },
   {
@@ -51,7 +48,7 @@ const router = createRouter({
   routes,
 });
 
-// Add navigation guard to protect routes
+// navigation guard to protect routes
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
   if (to.meta.requiresAuth && !token) {

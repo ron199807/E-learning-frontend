@@ -4,7 +4,7 @@
       <div class="section-header">
         <h2 class="section-title">What Our <span class="highlight">Students</span> Say</h2>
         <p class="section-description">
-          Hear from our students about their learning experience with EduLearn.
+          Hear from our students about their learning experience with Btee.
         </p>
       </div>
       <div class="testimonials-grid">

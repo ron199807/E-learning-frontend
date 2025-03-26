@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <AppNavbar />
+    <!-- <AppNavbar /> -->
     <router-view></router-view> <!-- This will render the current route's component -->
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </div>
 </template>
 
