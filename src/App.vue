@@ -1,20 +1,15 @@
 <template>
   <div id="app">
-    <!-- <AppNavbar /> -->
     <router-view></router-view> <!-- This will render the current route's component -->
-    <!-- <AppFooter /> -->
   </div>
 </template>
 
 <script>
-import AppNavbar from '@/components/LandingPage/Navbar.vue';
-import AppFooter from '@/components/LandingPage/AppFooter.vue';
+
 
 export default {
   name: 'App',
   components: {
-    AppNavbar,
-    AppFooter,
   },
 };
 </script>

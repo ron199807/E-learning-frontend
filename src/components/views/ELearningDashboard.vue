@@ -1,4 +1,5 @@
 <template>
+  <dashNav />
   <div class="app-container">
     <!-- Left Sidebar -->
     <aside class="left-sidebar" :class="{ open: isSidebarOpen }">
@@ -69,11 +70,13 @@ import DashboardHeader from '@/components/dashboard/DashboardHeader.vue';
 import WelcomeSection from '@/components/dashboard/content/DashWelcomeSection.vue';
 import StatsCards from '@/components/dashboard/content/DashStatsCards.vue';
 import TabsContainer from '@/components/dashboard/content/DashTabsContainer.vue';
-import AssignmentsList from '@/components/dashboard/content/DashAssignmentsList.vue';
+import AssignmentsList from '@/components/dashboard/content/CourcesYouMyLike.vue';
+import dashNav from '../dashboard/content/dashNav.vue';
 
 export default {
   name: 'ElearningDashboard',
   components: {
+    dashNav,
     SidebarHeader,
     SidebarNavigation,
     UpgradeCard,

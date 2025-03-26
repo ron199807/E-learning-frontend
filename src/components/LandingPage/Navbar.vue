@@ -9,7 +9,7 @@
         <span class="logo-text">Btee</span>
       </div>
       <nav class="main-nav">
-        <router-link to="/" class="nav-link">Home</router-link>
+        <router-link to="/dashboard" class="nav-link">Home</router-link>
         <a href="#courses" class="nav-link">Courses</a>
         <a href="#features" class="nav-link">Features</a>
         <a href="#testimonials" class="nav-link">Testimonials</a>
@@ -112,7 +112,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #fffffff2;
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -173,8 +173,13 @@ export default {
   text-decoration: none;
 }
 
-.nav-link:hover, .nav-link.active {
-  color: --te;
+.nav-link:hover {
+  color: #4c4cc7;
+  text-decoration: underline;
+}
+
+.nav-link:active {
+  color: #4c4cc7;
 }
 
 .nav-link::after {
@@ -274,7 +279,7 @@ export default {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background-color: var(--primary-dark);
   color: white;
   border: none;
 }
