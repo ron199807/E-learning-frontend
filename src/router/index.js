@@ -5,8 +5,9 @@ import UserSignup from '@/components/LandingPage/Signup.vue';
 import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
 // import UserHome from '@/components/LandingPage/Home.vue';
 import UserPayment from '@/components/LandingPage/Payment.vue';
-import Studentdashboard from '@/components/views/ELearningDashboard.vue';
+// import Studentdashboard from '@/components/views/ELearningDashboard.vue';
 import LandingPage from '@/components/views/LandingPage.vue';
+import ElearningDashboard from '@/components/views/ELearningDashboard.vue';
 
 const routes = [
   {
@@ -39,8 +40,8 @@ const routes = [
 
   {
     path: '/dashboard',
-    name: 'StudentDashboard',
-    component: Studentdashboard,
+    name: 'ElearningDashboard',
+    component: ElearningDashboard,
     meta: { requiresAuth: true },
   },
 ];

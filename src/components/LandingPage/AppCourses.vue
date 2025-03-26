@@ -172,6 +172,18 @@ const courses = [
   opacity: 1;
 }
 
+/* buttons */
+.btn-outline {
+  padding: .5rem 1rem;
+  background: blue;
+  border-radius: .5rem;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: rgb(14, 14, 209);
+}
+
 .course-level {
   position: absolute;
   top: 1rem;
@@ -244,6 +256,21 @@ const courses = [
   align-items: center;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.course-footer a {
+  background: skyblue;
+  border-radius: .5rem;
+}
+
+.course-footer a:hover {
+  background: #12a1df;
 }
 
 .course-price {

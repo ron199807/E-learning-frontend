@@ -88,13 +88,36 @@ const plans = [
 </script>
 
 <style scoped>
+:root {
+    --primary-color: #2563eb;
+    --primary-light: #dbeafe;
+    --secondary-color: #475569;
+    --accent-color: #f59e0b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-light: #94a3b8;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+    --transition: all 0.2s ease;
+  }
+
+
 .pricing-section {
   padding: 5rem 0;
-  background-color: var(--background-white);
+  background-color: var(--bg-light);
 }
 
 .highlight {
-  color: var(--primary);
+  color: var(--text-primary);
   position: relative;
 }
 
@@ -117,9 +140,9 @@ const plans = [
 }
 
 .pricing-card {
-  background-color: var(--background-white);
+  background-color: var(--bg-white);
   padding: 2.5rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
@@ -128,13 +151,29 @@ const plans = [
   flex-direction: column;
 }
 
+.btn {
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: var(--radius-md);
+}
+
+.btn-outline {
+  background: var(--primary-color);
+  color: var(--bg-white);
+  
+}
+
+.btn-outline:hover {
+background: #0e54df;
+}
+
 .pricing-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-md);
 }
 
 .pricing-card-popular {
-  background-color: var(--primary);
+  background: var(--primary-color);
   color: white;
   transform: scale(1.05);
   z-index: 1;
@@ -148,7 +187,7 @@ const plans = [
   position: absolute;
   top: 0;
   right: 2rem;
-  background-color: var(--secondary);
+  background: var(--success-color);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
@@ -201,12 +240,14 @@ const plans = [
 }
 
 .pricing-card-popular .feature-icon svg {
-  stroke: white;
+  stroke: red;
 }
 
 .pricing-card-popular .btn-light {
-  background-color: white;
-  color: var(--primary);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: .3rem;
 }
 
 .pricing-card-popular .btn-light:hover {

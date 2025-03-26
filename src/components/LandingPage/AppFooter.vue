@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; {{ new Date().getFullYear() }} EduLearn. All rights reserved.</p>
+        <p>&copy; {{ new Date().getFullYear() }} Btee. All rights reserved.</p>
         <div class="footer-bottom-links">
           <a href="#" class="footer-bottom-link">Privacy Policy</a>
           <a href="#" class="footer-bottom-link">Terms of Service</a>
