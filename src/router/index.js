@@ -5,6 +5,8 @@ import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
 import UserPayment from '@/components/LandingPage/Payment.vue';
 import LandingPage from '@/components/views/LandingPage.vue';
 import ElearningDashboard from '@/components/views/ELearningDashboard.vue';
+import DigitalServices from '@/components/views/DigitalServices.vue';
+
 
 const routes = [
   {
@@ -41,6 +43,15 @@ const routes = [
     component: ElearningDashboard,
     meta: { requiresAuth: true },
   },
+
+  {
+    path: '/digital_solutions',
+    name: 'DigitalServices',
+    component: DigitalServices,
+  }
+
+ 
+
 ];
 
 const router = createRouter({

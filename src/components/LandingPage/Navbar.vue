@@ -1,56 +1,100 @@
 <template>
-  <header class="header" :class="{ 'scrolled': scrolled }">
-    <div class="container header-container">
-      <div class="logo">
-        <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+  <header class="navbar" :class="{ 'navbar--scrolled': scrolled }">
+    <div class="navbar__container">
+      <div class="navbar__brand">
+        <svg class="navbar__logo" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="#4f46e5"/>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#4f46e5"/>
         </svg>
-        <span class="logo-text">Btee</span>
+        <span class="navbar__brand-name">Btee</span>
       </div>
-      <nav class="main-nav">
-        <router-link to="/dashboard" class="nav-link">Home</router-link>
-        <a href="#courses" class="nav-link">Courses</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
+
+      <nav class="navbar__desktop-nav">
+       <a href="#home" class=" navbar__link">Home</a>
+        <a href="#courses" class="navbar__link">Courses</a>
+        <a href="#features" class="navbar__link">Features</a>
+        <a href="#testimonials" class="navbar__link">Testimonials</a>
+        <a href="#pricing" class="navbar__link">Pricing</a>
+        <router-link to="/digital_solutions" class="navbar__link"> digital-solutions</router-link>
       </nav>
-      <div class="header-actions">
-        <router-link to="/login" class="login-link" v-if="!isAuthenticated">Log in</router-link>
-        <router-link to="/signup" class="btn btn-primary" v-if="!isAuthenticated" @click="debugNavigation">Sign up</router-link>
-        <router-link to="/dashboard" class="nav-link" v-if="isAuthenticated">Dashboard</router-link>
-        <button @click="logout" class="btn btn-primary" v-if="isAuthenticated">Logout</button>
-        <button @click="toggleMobileMenu" class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span v-if="!mobileMenuOpen" class="menu-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+
+      <div class="navbar__actions">
+        <template v-if="!isAuthenticated">
+          <router-link to="/login" class="navbar__login">Log in</router-link>
+          <router-link to="/signup" class="navbar__button" @click="debugNavigation">Sign up</router-link>
+        </template>
+        <template v-else>
+          <router-link to="/dashboard" class="navbar__link">Dashboard</router-link>
+          <button @click="logout" class="navbar__button">Logout</button>
+        </template>
+        
+        <button 
+          @click="toggleMobileMenu" 
+          class="navbar__mobile-toggle" 
+          aria-label="Toggle menu"
+          aria-expanded="mobileMenuOpen"
+        >
+          <span v-if="!mobileMenuOpen" class="navbar__hamburger">
+            <span class="navbar__hamburger-line"></span>
+            <span class="navbar__hamburger-line"></span>
+            <span class="navbar__hamburger-line"></span>
           </span>
-          <span v-else class="close-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+          <span v-else class="navbar__close">
+            <span class="navbar__close-line"></span>
+            <span class="navbar__close-line"></span>
           </span>
         </button>
       </div>
     </div>
+
     <!-- Mobile menu -->
-    <div class="mobile-menu" :class="{ 'active': mobileMenuOpen }">
-      <nav class="mobile-nav">
-        <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">Home</router-link>
-        <a href="#courses" class="mobile-nav-link" @click="closeMobileMenu">Courses</a>
-        <a href="#features" class="mobile-nav-link" @click="closeMobileMenu">Features</a>
-        <a href="#testimonials" class="mobile-nav-link" @click="closeMobileMenu">Testimonials</a>
-        <a href="#pricing" class="mobile-nav-link" @click="closeMobileMenu">Pricing</a>
-        <router-link to="/login" class="mobile-nav-link" @click="closeMobileMenu" v-if="!isAuthenticated">Log in</router-link>
-        <router-link to="/signup" class="btn btn-primary mobile-btn" @click="closeMobileMenu" v-if="!isAuthenticated">Sign up</router-link>
-        <router-link to="/dashboard" class="mobile-nav-link" @click="navigateToDashboard" v-if="isAuthenticated">Dashboard</router-link>
-        <button @click="logout" class="btn btn-primary mobile-btn" v-if="isAuthenticated">Logout</button>
-      </nav>
-    </div>
+    <transition name="slide-down">
+      <div v-if="mobileMenuOpen" class="navbar__mobile-menu">
+        <nav class="navbar__mobile-nav">
+          <a href="#home" class="navbar__mobile-link" @click="closeMobileMenu">Home</a>
+          <a href="#courses" class="navbar__mobile-link" @click="closeMobileMenu">Courses</a>
+          <a href="#features" class="navbar__mobile-link" @click="closeMobileMenu">Features</a>
+          <a href="#testimonials" class="navbar__mobile-link" @click="closeMobileMenu">Testimonials</a>
+          <a href="#pricing" class="navbar__mobile-link" @click="closeMobileMenu">Pricing</a>
+          <router-link to="/digital_solutions" class="navbar__mobile-link" @click="closeMobileMenu">digital-solutions</router-link>
+
+          
+          <div class="navbar__mobile-actions">
+            <router-link 
+              v-if="!isAuthenticated"
+              to="/login" 
+              class="navbar__mobile-link"
+              @click="closeMobileMenu"
+            >
+              Log in
+            </router-link>
+            <router-link 
+              v-if="!isAuthenticated"
+              to="/signup" 
+              class="navbar__mobile-button"
+              @click="closeMobileMenu"
+            >
+              Sign up
+            </router-link>
+            <router-link 
+              v-if="isAuthenticated"
+              to="/dashboard" 
+              class="navbar__mobile-link"
+              @click="navigateToDashboard"
+            >
+              Dashboard
+            </router-link>
+            <button 
+              v-if="isAuthenticated"
+              @click="logout" 
+              class="navbar__mobile-button"
+            >
+              Logout
+            </button>
+          </div>
+        </nav>
+      </div>
+    </transition>
   </header>
 </template>
 
@@ -72,33 +116,27 @@ export default {
     debugNavigation() {
       console.log('Sign Up link clicked');
     },
-
     navigateToDashboard() {
       console.log('Attempting to navigate to dashboard');
       console.log('Current auth state:', this.isAuthenticated);
       this.$router.push('/dashboard')
         .then(() => console.log('Navigation successful'))
         .catch(err => console.error('Navigation failed:', err));
-  },
-
+    },
     async logout() {
       await this.$store.dispatch('logout');
       this.$router.push('/login');
     },
     toggleMobileMenu() {
       this.mobileMenuOpen = !this.mobileMenuOpen;
-      if (this.mobileMenuOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : '';
     },
     closeMobileMenu() {
       this.mobileMenuOpen = false;
       document.body.style.overflow = '';
     },
     handleScroll() {
-      this.scrolled = window.scrollY > 50;
+      this.scrolled = window.scrollY > 10;
     }
   },
   mounted() {
@@ -111,193 +149,266 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  background-color: #fffffff2;
-  backdrop-filter: blur(10px);
-  position: sticky;
+/* Base Styles */
+.navbar {
+  position: fixed;
   top: 0;
-  z-index: 13;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid transparent;
-  width: 100%;
-  
-}
-
-.header.scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.header-container {
+.navbar--scrolled {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
   transition: padding 0.3s ease;
 }
 
-.scrolled .header-container {
+.navbar--scrolled .navbar__container {
   padding: 0.75rem 1.5rem;
 }
 
-.logo {
+/* Branding */
+.navbar__brand {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
 }
 
-.logo-icon {
+.navbar__logo {
   width: 32px;
   height: 32px;
-  color: var(--primary);
-  margin-right: 0.5rem;
+  flex-shrink: 0;
 }
 
-.logo-text {
+.navbar__brand-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
-  letter-spacing: -0.5px;
+  color: #4f46e5;
+  letter-spacing: -0.025em;
 }
 
-.main-nav {
+/* Desktop Navigation */
+.navbar__desktop-nav {
   display: none;
+  gap: 1.5rem;
 }
 
-.nav-link {
-  margin: 0 1rem;
-  color: var(--text-medium);
-  font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
+.navbar__link {
   position: relative;
-  padding: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
   text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0;
 }
 
-.nav-link:hover {
-  color: #4c4cc7;
-  text-decoration: underline;
+.navbar__link:hover {
+  color: #4f46e5;
 }
 
-.nav-link:active {
-  color: #4c4cc7;
-}
-
-.nav-link::after {
+.navbar__link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--primary);
+  background-color: #4f46e5;
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after, .nav-link.active::after {
+.navbar__link:hover::after {
   width: 100%;
 }
 
-.header-actions {
+/* Actions */
+.navbar__actions {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
-.login-link {
-  margin-right: 1rem;
-  color: var(--text-medium);
-  font-weight: 500;
+.navbar__login {
   display: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar__login:hover {
+  color: #4f46e5;
+}
+
+.navbar__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
-.login-link:hover {
-  color: var(--primary);
+.navbar__button:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
 }
 
-.mobile-menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Mobile Toggle */
+.navbar__mobile-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-medium);
-  transition: color 0.3s ease;
-}
-
-.mobile-menu-toggle:hover {
-  color: var(--primary);
-}
-
-.mobile-menu {
-  background-color: white;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
   padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.mobile-menu.active {
-  max-height: 100vh;
-  padding: 1rem 1.5rem;
-}
-
-.mobile-nav {
+.navbar__hamburger {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 4px;
+  width: 24px;
 }
 
-.mobile-nav-link {
-  padding: 0.75rem 0;
-  color: var(--text-medium);
-  font-weight: 500;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: color 0.3s ease;
-  text-decoration: none;
-}
-
-.mobile-nav-link:hover {
-  color: var(--primary);
-}
-
-.mobile-nav-link:last-of-type {
-  border-bottom: none;
-}
-
-.mobile-btn {
-  margin-top: 0.5rem;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  text-decoration: none;
+.navbar__hamburger-line {
+  height: 2px;
+  width: 100%;
+  background-color: #4b5563;
   transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background-color: var(--primary-dark);
+.navbar__close {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.navbar__close-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #4b5563;
+}
+
+.navbar__close-line:first-child {
+  transform: rotate(45deg);
+}
+
+.navbar__close-line:last-child {
+  transform: rotate(-45deg);
+}
+
+/* Mobile Menu */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.navbar__mobile-menu {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.navbar__mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+}
+
+.navbar__mobile-link {
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  border-bottom: 1px solid #f3f4f6;
+  transition: color 0.2s ease;
+}
+
+.navbar__mobile-link:hover {
+  color: #4f46e5;
+}
+
+.navbar__mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.navbar__mobile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
   color: white;
+  background-color: #4f46e5;
   border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
-.btn-primary:hover {
-  background-color: var(--primary-dark);
+.navbar__mobile-button:hover {
+  background-color: #4338ca;
 }
 
+/* Responsive Styles */
 @media (min-width: 1024px) {
-  .main-nav {
+  .navbar__desktop-nav {
     display: flex;
   }
   
-  .login-link {
-    display: inline-block;
+  .navbar__login {
+    display: inline-flex;
   }
   
-  .mobile-menu-toggle {
+  .navbar__mobile-toggle {
+    display: none;
+  }
+  
+  .navbar__mobile-menu {
     display: none;
   }
 }
