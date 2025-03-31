@@ -277,6 +277,10 @@ export default {
   transform: translateY(-1px);
 }
 
+.navbar__button:active {
+  color: #4a6bff;
+}
+
 /* Mobile Toggle */
 .navbar__mobile-toggle {
   display: flex;

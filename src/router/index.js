@@ -4,8 +4,8 @@ import UserSignup from '@/components/LandingPage/Signup.vue';
 import CourseMaterial from '@/components/LandingPage/CourseMaterial.vue';
 import UserPayment from '@/components/LandingPage/Payment.vue';
 import LandingPage from '@/components/views/LandingPage.vue';
-import ElearningDashboard from '@/components/views/ELearningDashboard.vue';
 import DigitalServices from '@/components/views/DigitalServices.vue';
+import MainDashboard from '@/components/views/MainDashboard.vue';
 
 
 const routes = [
@@ -39,8 +39,8 @@ const routes = [
 
   {
     path: '/dashboard',
-    name: 'ElearningDashboard',
-    component: ElearningDashboard,
+    name: 'MainDashoard',
+    component: MainDashboard,
     meta: { requiresAuth: true },
   },
 

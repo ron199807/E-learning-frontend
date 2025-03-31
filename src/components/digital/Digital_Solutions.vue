@@ -6,7 +6,7 @@
         <router-link to="/" class="header__back-link">
           <arrow-left-icon class="header__back-icon" />
         </router-link>
-        <h1 class="header__logo">DigitalSolutions</h1>
+        <h1 class="header__logo">Btee-Solutions</h1>
         <nav class="header__nav">
           <ul class="header__nav-list">
             <li><a href="#services" class="header__nav-link">Services</a></li>
@@ -205,7 +205,7 @@
                   required
                 >
                 <label for="consent" class="form-checkbox-label">
-                  I consent to DigitalSolutions processing my data to contact me.
+                  I consent to Btee-Solutions processing my data to contact me.
                 </label>
               </div>
               
@@ -234,7 +234,7 @@
       <div class="container">
         <div class="footer__grid">
           <div class="footer__column">
-            <h3 class="footer__logo">DigitalSolutions</h3>
+            <h3 class="footer__logo">Btee-Solutions</h3>
             <p class="footer__description">
               Transforming ideas into powerful digital experiences.
             </p>
@@ -251,16 +251,15 @@
           <div class="footer__column">
             <h4 class="footer__heading">Contact Us</h4>
             <address class="footer__address">
-              <p>123 Tech Street</p>
-              <p>Innovation City, IC 12345</p>
-              <p class="footer__contact-info">info@digitalsolutions.example</p>
-              <p>+1 (555) 123-4567</p>
+              <p>Lusaka City, Zambia</p>
+              <p class="footer__contact-info">info@Btee-solutions.com</p>
+              <p>+(2609) 6683-9700</p>
             </address>
           </div>
         </div>
         
         <div class="footer__bottom">
-          <p>&copy; {{ new Date().getFullYear() }} DigitalSolutions. All rights reserved.</p>
+          <p>&copy; {{ new Date().getFullYear() }} Btee-Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>
