@@ -9,13 +9,9 @@
           <span></span>
           <span></span>
         </button>
-        <!-- Back Home Button - Only visible on mobile -->
-        <button v-if="isMobile" @click="$emit('go-home')" class="back-home-btn">
-          <span>Home</span>
-        </button>
         <div class="navbar-brand">
           <BookOpen class="navbar-logo" />
-          <span class="navbar-title">Btee</span>
+          <span class="navbar-title">LearnHub</span>
         </div>
         <div class="navbar-links">
           <a href="#" class="nav-link active">Home</a>
@@ -60,7 +56,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
 import { Bell, BookOpen, Search } from 'lucide-vue-next';
 
 defineProps({
@@ -74,7 +69,7 @@ defineProps({
   }
 });
 
-defineEmits(['toggle-sidebar', 'go-home']);
+defineEmits(['toggle-sidebar']);
 </script>
 
 <style scoped>
@@ -111,7 +106,6 @@ defineEmits(['toggle-sidebar', 'go-home']);
   height: 2rem;
   width: 2rem;
   color: white;
-  padding-left: 3rem;
 }
 
 .navbar-title {
@@ -126,13 +120,9 @@ defineEmits(['toggle-sidebar', 'go-home']);
 }
 
 @media (min-width: 640px) {
-  .navbar-container {
-    max-width: 100%;
-  }
-
   .navbar-links {
     display: flex;
-    margin-left: .5rem;
+    margin-left: 1.5rem;
     gap: 2rem;
   }
 }
@@ -219,7 +209,6 @@ defineEmits(['toggle-sidebar', 'go-home']);
   padding: 0.25rem;
   color: #dbeafe;
   transition: all 0.3s;
-  border: 0;
 }
 
 .notification-btn:hover {
@@ -244,7 +233,6 @@ defineEmits(['toggle-sidebar', 'go-home']);
   border-radius: 9999px;
   background-color: #3b82f6;
   font-size: 0.875rem;
-  border: 0;
 }
 
 .profile-img {
@@ -264,8 +252,8 @@ defineEmits(['toggle-sidebar', 'go-home']);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -280,7 +268,7 @@ defineEmits(['toggle-sidebar', 'go-home']);
 }
 
 .hamburger-menu span {
-  width: 1.5rem;
+  width: 2rem;
   height: 0.25rem;
   background: white;
   border-radius: 10px;
@@ -313,7 +301,6 @@ defineEmits(['toggle-sidebar', 'go-home']);
   font-weight: 500;
   color: #dbeafe;
   transition: all 0.3s ease;
-  text-decoration: none; /* Remove text decoration */
 }
 
 .nav-link::after {
@@ -342,24 +329,6 @@ defineEmits(['toggle-sidebar', 'go-home']);
 
 .nav-link.active::after {
   width: 100%;
-}
-
-/* Back Home Button - Mobile only */
-.back-home-btn {
-  display: none;
-  background: transparent;
-  border: none;
-  color: white;
-  font-weight: 500;
-  padding: 0.5rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  .back-home-btn {
-    display: block;
-  }
 }
 
 /* Screen reader only */
